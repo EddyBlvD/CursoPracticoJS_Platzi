@@ -26,7 +26,7 @@ function areaCirculo(radio) {
 }
 
 // Aquí interactuamos con el HTML
-//Selección de Label para imprimir resultado
+
 const inputLado = document.getElementById("cuadradoInputLado");
 const botonArea = document.getElementById("cuadradoAreabtn");
 const botonPerimetro = document.getElementById("cuadradoPerimetrobtn");
@@ -37,55 +37,68 @@ const spanPerimetroCuadrado = document.getElementById("spanPerimetroCuadrado");
 botonArea.addEventListener("click", () => {
 	const cladoA = parseFloat(inputLado.value);
 	const cArea = areaCuadrado(cladoA);
+	if (isNaN(inputLado) || inputLado <= 0) {
+		alert("Por favor ingresa un valor válido para el lado.");
+		return;
+	}
 	spanAreaCuadrado.textContent = cArea;
 });
 // Escuchar evento que calcula Perimetro
 botonPerimetro.addEventListener("click", () => {
 	const cladoP = parseFloat(inputLado.value);
 	const cPerimetro = perimetroCuadrado(cladoP);
+	if (isNaN(inputLado) || inputLado <= 0) {
+		alert("Por favor ingresa un valor válido para el lado.");
+		return;
+	}
 	spanPerimetroCuadrado.textContent = cPerimetro;
 });
 
-function calcularPerimetroTriangulo() {
-	const tLado1 = document.getElementById("tLado1");
-	const value1 = Number(tLado1.value);
-	const tLado2 = document.getElementById("tLado2");
-	const value2 = Number(tLado2.value);
-	const tBase = document.getElementById("tBase");
-	const value3 = Number(tBase.value);
-	const tAltura = document.getElementById("tAltura");
-	const value4 = Number(tAltura.value);
+// Obtener referencias de los inputs
+const tbase = document.getElementById("trianguloInputBase");
+const taltura = document.getElementById("trianguloInputAltura");
+const tlado1 = document.getElementById("trianguloInputLado1");
+const tlado2 = document.getElementById("trianguloInputLado2");
+const tlado3 = document.getElementById("trianguloInputLado3");
+// Obtener referencias de botones
+const tbotonArea = document.getElementById("trianguloAreabtn");
+const tbotonPerimetro = document.getElementById("trianguloPerimetrobtn");
+// Obtener referencias de resultados
+const spanAreaTriangulo = document.getElementById("spanAreaTriangulo");
+const spanPerimetroTriangulo = document.getElementById(
+	"spanPerimetroTriangulo"
+);
 
-	const tPerimetro = perimetroTriangulo(value1, value2, value3);
-	alert(tPerimetro);
-}
+// Evento para calcular área
+tbotonArea.addEventListener("click", () => {
+	const baseVal = parseFloat(tbase.value);
+	const alturaVal = parseFloat(taltura.value);
 
-function calcularAreaTriangulo() {
-	const tLado1 = document.getElementById("tLado1");
-	const value1 = Number(tLado1.value);
-	const tLado2 = document.getElementById("tLado2");
-	const value2 = Number(tLado2.value);
-	const tBase = document.getElementById("tBase");
-	const value3 = Number(tBase.value);
-	const tAltura = document.getElementById("tAltura");
-	const value4 = Number(tAltura.value);
+	if (isNaN(baseVal) || isNaN(alturaVal) || baseVal <= 0 || alturaVal <= 0) {
+		alert("Por favor ingresa valores válidos para base y altura.");
+		return;
+	}
+	const tArea = areaTriangulo(baseVal, alturaVal);
+	spanAreaTriangulo.textContent = tArea;
+});
 
-	const tArea = areaTriangulo(value3, value4);
-	alert(tArea);
-}
+// Evento para calcular perímetro
+tbotonPerimetro.addEventListener("click", () => {
+	const lado1Val = parseFloat(tlado1.value);
+	const lado2Val = parseFloat(tlado2.value);
+	const lado3Val = parseFloat(tlado3.value);
 
-function calcularPerimetroCirculo() {
-	const inputCirculo = document.getElementById("InputCirculo");
-	const cValue = parseFloat(inputCirculo.value);
-
-	const cPerimetro = perimetroCirculo(cValue).toFixed(2);
-	alert(cPerimetro);
-}
-
-function calcularAreaCirculo() {
-	const inputCirculo = document.getElementById("InputCirculo");
-	const cValue = parseFloat(inputCirculo.value);
-
-	const cArea = areaCirculo(cValue).toFixed(2);
-	alert(cArea);
-}
+	if (
+		isNaN(lado1Val) ||
+		lado1Val <= 0 ||
+		isNaN(lado2Val) ||
+		lado2Val <= 0 ||
+		isNaN(lado3Val) ||
+		lado3Val <= 0
+	) {
+		alert("Por favor ingresa valores válidos para los tres lados.");
+		return;
+	}
+	const tPerimetro = perimetroTriangulo(lado1Val, lado2Val, lado3Val); // tu función
+	spanPerimetroTriangulo.textContent = tPerimetro;
+});
