@@ -23,14 +23,14 @@
             <h2>Cuadrado</h2>
             <div class="inputs">
                 <label>Lado:
-                <input type="number" placeholder="Medida del lado" />
+                <input id="cuadradoInputLado" type="number" placeholder="Medida del lado" />
                 </label>
             </div>
             <div class="buttons">
-        <button>Calcular Área</button>
-        <button>Calcular Perímetro</button>
+        <button id="cuadradoAreabtn">Calcular Área</button>
+        <button id="cuadradoPerimetrobtn">Calcular Perímetro</button>
       </div>
-      <div class="result">Resultado: Área= -- , Perímetro= --</div>
+      <div class="result">Resultado: Área= <span id="spanAreaCuadrado">--</span> , Perímetro= <span id="spanPerimetroCuadrado">--</span></div>
         </section>
         <!--Tarjeta Triángulo-->
         <section class="card">
@@ -93,5 +93,6 @@
         </span>
       </div>
     </footer>
+    <script src="./script.js"></script>
   </body>
 </html>
