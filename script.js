@@ -37,7 +37,7 @@ const spanPerimetroCuadrado = document.getElementById("spanPerimetroCuadrado");
 botonArea.addEventListener("click", () => {
 	const cladoA = parseFloat(inputLado.value);
 	const cArea = areaCuadrado(cladoA);
-	if (cladoA <= 0) {
+	if (isNaN(cladoA) || cladoA <= 0) {
 		alert("Por favor ingresa un valor válido para el lado.");
 		return;
 	}
@@ -47,7 +47,7 @@ botonArea.addEventListener("click", () => {
 botonPerimetro.addEventListener("click", () => {
 	const cladoP = parseFloat(inputLado.value);
 	const cPerimetro = perimetroCuadrado(cladoP);
-	if (cladoP <= 0) {
+	if (isNaN(cladoP) || cladoP <= 0) {
 		alert("Por favor ingresa un valor válido para el lado.");
 		return;
 	}
