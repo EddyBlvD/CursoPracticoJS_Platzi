@@ -37,7 +37,7 @@ const spanPerimetroCuadrado = document.getElementById("spanPerimetroCuadrado");
 botonArea.addEventListener("click", () => {
 	const cladoA = parseFloat(inputLado.value);
 	const cArea = areaCuadrado(cladoA);
-	if (isNaN(inputLado) || inputLado <= 0) {
+	if (cladoA <= 0) {
 		alert("Por favor ingresa un valor válido para el lado.");
 		return;
 	}
@@ -47,7 +47,7 @@ botonArea.addEventListener("click", () => {
 botonPerimetro.addEventListener("click", () => {
 	const cladoP = parseFloat(inputLado.value);
 	const cPerimetro = perimetroCuadrado(cladoP);
-	if (isNaN(inputLado) || inputLado <= 0) {
+	if (cladoP <= 0) {
 		alert("Por favor ingresa un valor válido para el lado.");
 		return;
 	}
@@ -99,6 +99,34 @@ tbotonPerimetro.addEventListener("click", () => {
 		alert("Por favor ingresa valores válidos para los tres lados.");
 		return;
 	}
-	const tPerimetro = perimetroTriangulo(lado1Val, lado2Val, lado3Val); // tu función
+	const tPerimetro = perimetroTriangulo(lado1Val, lado2Val, lado3Val);
 	spanPerimetroTriangulo.textContent = tPerimetro;
+});
+
+// Obtener referencias
+const radio = document.getElementById("circuloInputRadio");
+const circBotonArea = document.getElementById("circuloAreabtn");
+const circBotonPerimetro = document.getElementById("circuloPerimetrobtn");
+const circSpanArea = document.getElementById("spanAreaCirculo");
+const circSpanPerimetro = document.getElementById("spanPerimetroCirculo");
+// Evento calcular área
+circBotonArea.addEventListener("click", () => {
+	const radioVal = parseFloat(radio.value);
+	if (isNaN(radioVal) || radioVal <= 0) {
+		alert("Por favor ingresa un valor válido para el radio.");
+		return;
+	}
+	const circArea = areaCirculo(radioVal);
+	circSpanArea.textContent = circArea.toFixed(2);
+});
+
+// Evento calcular perímetro
+circBotonPerimetro.addEventListener("click", () => {
+	const radioVal = parseFloat(radio.value);
+	if (isNaN(radioVal) || radioVal <= 0) {
+		alert("Por favor ingresa un valor válido para el radio.");
+		return;
+	}
+	const circPerimetro = perimetroCirculo(radioVal);
+	circSpanPerimetro.textContent = circPerimetro.toFixed(2);
 });
